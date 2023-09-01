@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "vuejs: build",
+        "type": "npm",
+        "script": "install",
+        "isBackground": true
+      },
+      {
+        "label": "vuejs: start",
+        "type": "npm",
+        "script": "serve",
+        "isBackground": true
+      }
+    ]
+  }
