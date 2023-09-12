@@ -57,11 +57,11 @@ This will create a `node_modules` folder with all the dependencies needed to run
 
 > Learn more: [Vue.js debugging in Chrome and VS Code](https://github.com/microsoft/vscode-recipes/tree/main/vuejs-cli#configure-launchjson-file)
 
-1. **Configure the `launch.json` and `tasks.json` files**. Click on the Debugging icon in the Activity Bar to bring up the Debug view. Then click on the gear icon to configure a `launch.json` file, selecting Chrome for the environment:
+1. **Configure the `launch.json` file**. Click on the Debugging icon in the Activity Bar to bring up the Debug view. Then click on the gear icon to configure a `launch.json` file, selecting Chrome for the environment:
 
 ![Configure launch.json on VS Code](https://github.com/microsoft/vscode-recipes/raw/main/vuejs-cli/config_add.png)
 
-2. Replace content of the generated `launch.json` with the following configurations:
+2. **Configure the `tasks.json` file**. Replace content of the generated `launch.json` with the following configurations:
 
 ```json
 {
@@ -93,27 +93,29 @@ This will create a `node_modules` folder with all the dependencies needed to run
 }
 ```
 
-2. Replace content of the generated `tasks.json` with the following configurations:
+2. Add the following `npm` tasks to you  `tasks.json` file:
 
 ```json
 {
     "version": "2.0.0",
     "tasks": [
-      {
-        "label": "vuejs: build",
-        "type": "npm",
-        "script": "install",
-        "isBackground": true
-      },
-      {
-        "label": "vuejs: start",
-        "type": "npm",
-        "script": "serve",
-        "isBackground": true
-      }
+        {
+            "label": "vuejs: build",
+            "type": "npm",
+            "script": "install",
+            "isBackground": true
+        },
+        {
+            "label": "vuejs: start",
+            "type": "npm",
+            "script": "serve",
+            "isBackground": true
+        }
     ]
-  }
+}
 ```
+
+3. **Start debugging**. Set a [breakpoint](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) anywhere in the [`src\components\AppAccounts.vue`](src\components\AppAccounts.vue) file. Go to the Debug view, select the 'IE Bank Frontend' configuration, then press F5 or click the green play button. Your breakpoint should now be hit as the new instance of Chrome opens
 
 ## Configuration variables
 
