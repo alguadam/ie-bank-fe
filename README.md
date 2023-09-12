@@ -119,10 +119,10 @@ This will create a `node_modules` folder with all the dependencies needed to run
 
 ## Configuration variables
 
-> Learn more: 
-
+> Learn more: [Modes and Environment Variables](https://cli.vuejs.org/guide/mode-and-env.html#environment-variables)
 
 ## Continuos Delivery
 
-> Learn more:
+> Learn more: 
+> - [Vue Deployment on App Service Linux](https://azureossd.github.io/2022/02/11/Vue-Deployment-on-App-Service-Linux/)
 
