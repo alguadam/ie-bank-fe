@@ -119,10 +119,36 @@ This will create a `node_modules` folder with all the dependencies needed to run
 
 ## Configuration variables
 
-> Learn more: [Modes and Environment Variables](https://cli.vuejs.org/guide/mode-and-env.html#environment-variables)
+> Learn more: [Modes and Environment Variables](https://cli.vuejs.org/guide/mode-and-env.html)
+
+**Mode** is an important concept in Vue CLI projects. By default, there are three modes:
+- `development` is used by `vue-cli-service serve`
+- `test` is used by `vue-cli-service test:unit`
+- `production` is used by `vue-cli-service build` and `vue-cli-service test:e2e`
+
+When running `vue-cli-service`, environment variables are loaded from all corresponding files. If they don't contain a `NODE_ENV` variable, it will be set accordingly (`NODE_ENV` will be set to `"production"` in production mode, `"test"` in test mode, and defaults to `"development"` otherwise).
+
+You can specify env variables by placing the following files in your project root:
+
+```shell
+.env                # loaded in all cases
+.env.local          # loaded in all cases, ignored by git
+.env.[mode]         # only loaded in specified mode
+.env.[mode].local   # only loaded in specified mode, ignored by git
+```
+It is possible to define the mode to use at build time by using the `--mode` option. For example, to build for uat mode:
+
+- `vue-cli-service build --mode uat` builds a production app in uat mode, using `.env`, `.env.uat` and `.env.uat.local` if they are present
+
+The environment variables are specified in this project root:
+- [`.env.development`](.env.development)
+
+Only `NODE_ENV`, `BASE_URL`, and variables that start with `VUE_APP_` will be statically embedded into the client bundle, so do not use variables with other naming convention.
 
 ## Continuos Delivery
 
 > Learn more: 
 > - [Vue Deployment on App Service Linux](https://azureossd.github.io/2022/02/11/Vue-Deployment-on-App-Service-Linux/)
+
+The file [`.github/workflows/ie-bank-frontend.yml`](.github\workflows\ie-bank-frontend.yml) contains the configuration for the CI/CD pipeline.
 
