@@ -1,15 +1,16 @@
 # IE Bank frontend
 
-- [IE Bank backend](#ie-bank-backend)
+- [IE Bank frontend](#ie-bank-frontend)
   - [Overview](#overview)
   - [Requirements](#requirements)
   - [Recommended tutorials](#recommended-tutorials)
   - [Configure your local environment](#configure-your-local-environment)
     - [Install Prerequisites](#install-prerequisites)
-    - [Set up your local environment with VSCode](#set-up-your-local-environment-with-vscode)
+    - [Install node dependencies](#install-node-dependencies)
   - [Run and debug the backend locally](#run-and-debug-the-backend-locally)
   - [Configuration variables](#configuration-variables)
   - [Continuos Delivery](#continuos-delivery)
+    - [GitHub secrets](#github-secrets)
 
 
 ## Overview
@@ -25,11 +26,11 @@ This source code works under the following technologies:
 - [npm 9.6.7 (comes with Node)](https://www.npmjs.com/package/npm)
 
 ## Recommended tutorials
-- HTML
-- CSS
-- JavaScript
-- [Node.js]
-- [Vue.js](https://vuejs.org/guide/introduction.html)
+- [HTML](https://www.w3schools.com/html/)
+- [CSS](https://www.w3schools.com/css/default.asp)
+- [JavaScript](https://www.w3schools.com/js/default.asp)
+- [Node.js](https://www.w3schools.com/nodejs/default.asp)
+- [Vue.js](https://www.w3schools.com/vue/index.php)
 - [Node.js in VS Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)
 - [Using Vue in VS Code](https://code.visualstudio.com/docs/nodejs/vuejs-tutorial)
 
@@ -152,3 +153,10 @@ Only `NODE_ENV`, `BASE_URL`, and variables that start with `VUE_APP_` will be st
 
 The file [`.github/workflows/ie-bank-frontend.yml`](.github\workflows\ie-bank-frontend.yml) contains the configuration for the CI/CD pipeline.
 
+### GitHub secrets
+
+The workflow uses the following GitHub secrets:
+
+Secret name | Description | Learn more
+--- | --- | ---
+`AZURE_CREDENTIALS` | Azure credentials to authenticate to Azure via Service Principal | [Use the Azure login action with a service principal secret](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Clinux#use-the-azure-login-action-with-a-service-principal-secret)
