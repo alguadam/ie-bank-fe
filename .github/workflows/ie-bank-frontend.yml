@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  FRONTEND_WEBAPP_DEV: aguadamillas-fe-dev
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,5 +57,5 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'ie-bank-dev'
+          app-name: ${{ env.FRONTEND_WEBAPP_DEV }}
           package: .
