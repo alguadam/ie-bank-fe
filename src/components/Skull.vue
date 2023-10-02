@@ -17,6 +17,8 @@ export default
         name: 'Skull',
         data() {
             return {
+                env_var_file_name: process.env.VUE_APP_ENV_VAR_FILE_NAME,
+                environment: process.env.NODE_ENV,
                 msg: 'Hi! This is the skull component 💀'
             }
         },

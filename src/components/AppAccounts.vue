@@ -28,8 +28,8 @@
                 <th scope="col">Account Balance</th>
                 <th scope="col">Account Currency</th>
                 <th scope="col">Account Status</th>
-                <th scope="col">Actions</th>
                 <th scope="col">Country</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -48,6 +48,7 @@
                     account.status
                   }}</span>
                 </td>
+                <td>{{ account.country }}</td>
                 <td>
                   <div class="btn-group" role="group">
                     <button
@@ -67,7 +68,6 @@
                     </button>
                   </div>
                 </td>
-                <td>{{ account.country }}</td>
               </tr>
             </tbody>
           </table>
@@ -168,6 +168,8 @@ export default {
   data() {
     return {
       accounts: [],
+      env_var_file_name: process.env.VUE_APP_ENV_VAR_FILE_NAME,
+      environment: process.env.NODE_ENV,
       createAccountForm: {
         name: "",
         currency: "",
