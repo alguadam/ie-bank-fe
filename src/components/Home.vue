@@ -17,18 +17,11 @@
         <router-link to="/Accounts">
             <button>Accounts</button>
         </router-link>
-        <p> </p>
-        <img src="images/Bank.jpg" alt="Banco de España">
 
       </main>
     </div>
   </template>
-  
-  <script>
-  export default {
-    name: 'Home',
-  };
-  </script>
+
 
   <style scoped>
 

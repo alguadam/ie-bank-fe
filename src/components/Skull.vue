@@ -1,5 +1,8 @@
 <template>
     <div>
+        <router-link to="/">
+            <button>Home</button>
+        </router-link>
         <h1>Skull</h1>
         <p>Environment variables read from file {{ env_var_file_name }}</p>
         <p>{{ msg }}, and it is running from the {{ environment }} environment</p>

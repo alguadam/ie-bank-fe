@@ -3,6 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
+          <router-link to="/">
+            <button>Home</button>
+          </router-link>
           <h1>Accounts</h1>
           <hr />
           <br />
@@ -27,6 +30,7 @@
                 <th scope="col">Account Number</th>
                 <th scope="col">Account Balance</th>
                 <th scope="col">Account Currency</th>
+                <th scope="col">Account Country</th>
                 <th scope="col">Account Status</th>
                 <th scope="col">Actions</th>
               </tr>
@@ -37,6 +41,7 @@
                 <td>{{ account.account_number }}</td>
                 <td>{{ account.balance }}</td>
                 <td>{{ account.currency }}</td>
+                <td>{{ account.country }}</td>
                 <td>
                   <span
                     v-if="account.status == 'Active'"
@@ -106,6 +111,20 @@
               type="text"
               v-model="createAccountForm.currency"
               placeholder="$ or €"
+              required
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group
+            id="form-country-group"
+            label="Country:"
+            label-for="form-country-input"
+          >
+            <b-form-input
+              id="form-country-input"
+              type="text"
+              v-model="createAccountForm.country"
+              placeholder="Account Country"
               required
             >
             </b-form-input>
@@ -257,6 +276,7 @@ export default {
     initForm() {
       this.createAccountForm.name = "";
       this.createAccountForm.currency = "";
+      this.createAccountForm.country = "";
       this.editAccountForm.id = "";
       this.editAccountForm.name = "";
     },
@@ -268,6 +288,7 @@ export default {
       const payload = {
         name: this.createAccountForm.name,
         currency: this.createAccountForm.currency,
+        country: this.createAccountForm.country,
       };
       this.RESTcreateAccount(payload);
       this.initForm();
