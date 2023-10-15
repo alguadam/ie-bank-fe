@@ -15,6 +15,7 @@
           <button
             type="button"
             class="btn btn-success btn-sm"
+            style="background-color: #2c3e50;"
             v-b-modal.account-modal
           >
             Create Account

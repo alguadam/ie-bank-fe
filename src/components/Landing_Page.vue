@@ -2,12 +2,14 @@
     <div class="landing-page">
         <header>
             <!-- Navigation bar -->
+            <div class="header-img">
+                <img src="../assets/header_cut.png" alt="">
+            </div>
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="/skull">Skull</a></li>
+                    <li><a href="/accounts">Accounts</a></li>
                 </ul>
             </nav>
         </header>
@@ -15,7 +17,7 @@
         <main>
             <!-- Hero section -->
             <section class="hero">
-                <h1>Welcome to Our Bank</h1>
+                <h1>Welcome to IE Bank Corp</h1>
                 <p>Secure, reliable, and convenient banking services for all your financial needs.</p>
                 <button>Open an Account</button>
             </section>
@@ -52,45 +54,119 @@
                 </div>
             </section>
         </main>
-
-        <footer>
-            <!-- Footer content -->
-            <p>&copy; 2021 Our Bank. All rights reserved.</p>
-        </footer>
     </div>
 </template>
 
-<script>
-import axios from 'axios'
-export default
-    {
-        name: 'LandingPage',
-        data() {
-            return {
-                msg: 'Landing page / Home page whatever pls work'
-            }
-        },
-        methods:
-        {
-            getLand() {
-                const path = `${process.env.VUE_APP_ROOT_URL}/`;
-                axios.get(path)
-                    .then((response) => {
-                        this.msg = response.data;
-                        this.environment = process.env.NODE_ENV;
-                        this.env_var_file_name = process.env.VUE_APP_ENV_VAR_FILE_NAME
-                    })
-                    .catch(error => console.log(error))
-            }
-        },
-        created() {
-            this.getLand()
-        }
-
-
-    }
-</script>
-
 <style>
-/* Styles for the landing page */
+/* Overall Page Styling */
+.landing-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background-color: #2c3e50;
+    padding: 1rem 0;
+}
+
+.header-img {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+}
+.header-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ecf0f1;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #34495e;
+    border-radius: 5px;
+}
+
+/* Hero Section Styling */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background-color: #ecf0f1;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Features Section Styling */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem 2rem;
+    background-color: #f9f9f9;
+}
+
+.feature {
+    width: 30%;
+    text-align: center;
+}
+
+.feature i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Testimonials Section Styling */
+.testimonials {
+    padding: 3rem 2rem;
+    background-color: #ecf0f1;
+}
+
+.testimonial {
+    margin-bottom: 2rem;
+}
+
+.testimonial cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    color: #8e44ad;
+}
+
 </style>
