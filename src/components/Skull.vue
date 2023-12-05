@@ -35,7 +35,7 @@
       login() {
         const validUsername = 'marouane';
         const validPassword = 'devops';
-  
+
         if (this.username === validUsername && this.password === validPassword) {
           // Allow login if username and password match
           this.msg = 'Hi! This is the skull component 💀'; // Set the message after successful login
@@ -44,13 +44,13 @@
           this.loggedIn = true; // Update login status to true
         } else {
           // Display error if credentials are invalid
-          this.error = 'Invalid credentials. Please try again.';
+        this.error = 'Invalid credentials. Please try again.';
         }
-      },
+    },
       navigateToAccounts() {
         // Redirect to "/Accounts" route when logged in
         this.$router.push('/Accounts');
-      }
+    }
     },
     created() {
       this.getSkull(); // Perform login check when component is created
