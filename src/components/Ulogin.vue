@@ -1,40 +1,42 @@
 <template>
-    <div>
-      <ArrowLeftIcon class="back" @click="goBack" />
-      <h2>Login</h2>
-      <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="Enter your username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter your password" required>
-        <button type="submit">Login</button>
-        <router-link to="/usersignup">
-        <button class="signup">
-            Or sign up
-        </button>
-    </router-link>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  import { ArrowLeftIcon } from "@vue-hero-icons/outline";
-  
-  export default {
-    components: {
-      ArrowLeftIcon,
+  <div>
+    <ArrowLeftIcon class="back" @click="goBack" />
+    <h2>Login</h2>
+    <form @submit.prevent="login">
+      <label for="username">Username:</label>
+      <input v-model="username" type="text" id="username" placeholder="Enter your username" required>
+      <label for="password">Password:</label>
+      <input v-model="password" type="password" id="password" placeholder="Enter your password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import { ArrowLeftIcon } from "@vue-hero-icons/outline";
+import axios from "axios";
+
+export default {
+  components: {
+    ArrowLeftIcon,
+  },
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    goBack() {
+      // Check if the router exists
+      if (this.$router) {
+        // Navigate to the 'Home' route
+        this.$router.push({ name: "Home" });
+      }
     },
-    methods: {
-      goBack() {
-        // Check if the router exists
-        if (this.$router) {
-          // Navigate to the 'Home' route
-          this.$router.push({ name: 'Home' });
-        }
-      },
-    },
-  };
-  </script>
+  },
+};
+</script>
   
   <style scoped>
   /* Add your custom styles here */

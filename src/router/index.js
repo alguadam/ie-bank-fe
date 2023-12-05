@@ -5,6 +5,7 @@ import AppAccounts from '../components/AppAccounts.vue'
 import Ulogin from '../components/Ulogin.vue'
 import Home from '../components/Home.vue'
 
+
 Vue.use(VueRouter);
 
 const routes = [
