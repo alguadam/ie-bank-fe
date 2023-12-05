@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@vue-hero-icons/outline": "^1.7.2",
     "axios": "^1.1.3",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",

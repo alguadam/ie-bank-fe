@@ -1,34 +1,56 @@
 <template>
-    <div class="Home">
-      <div class="BlurredBackground"></div>
-      <header>
-        <h1>Welcome to IE Bank Corp</h1>
-      </header>
-      <section>
-          <h2>Your money is safe with us</h2>
-        </section>
-      <main>
-        <div class="login">
-          <h3>Log in</h3>
-        </div>
-        <div class="buttons">
+  <div class="Home">
+    <div class="BlurredBackground"></div>
+    <header>
+      <h1>Welcome to IE Bank Corp</h1>
+    </header>
+    <section>
+      <h2>Your money is safe with us</h2>
+    </section>
+    <main>
+      <div class="login">
+        <h3>Log in</h3>
+      </div>
+      <div class="buttons">
         <div class="admin">
           <router-link to="/Skull">
-              <button>Admin</button>
+            <button>
+              <UserGroupIcon class="icon" />
+              Admin
+            </button>
           </router-link>
         </div>
         <div class="user">
-          <router-link to="/Accounts">
-              <button>User</button>
+          <router-link to="/userlogin">
+            <button>
+              <UserIcon class="icon" />
+              User
+            </button>
           </router-link>
         </div>
-        </div>
-      </main>
-    </div>
-  </template>
+      </div>
+    </main>
+  </div>
+</template>
 
+<script>
+import { UserGroupIcon, UserIcon } from "@vue-hero-icons/outline";
+
+export default {
+  components: {
+    UserGroupIcon,
+    UserIcon,
+  },
+};
+</script>
 
 <style scoped>
+body, html {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+}
 
 .Home {
   position: relative;
@@ -37,8 +59,7 @@
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .BlurredBackground {
@@ -55,20 +76,18 @@
   z-index: -1;
 }
 
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-  .buttons {
-    display: flex; /* Add flex display to the buttons container */
-    margin: 0 auto;
-    padding: 50px;
-  }
+.buttons .admin,
+.buttons .user {
+  margin-right: 20px;
+}
 
-  .buttons .admin,
-  .buttons .user {
-    margin-right: 20px; /* Add margin between the buttons */
-  }
-
-  button {
-  margin-left: 50px;
+button {
   background-color: #5fbd6f;
   color: #fff;
   border: none;
@@ -78,52 +97,51 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-  
-  header {
 
-    text-align: center;
-    margin-top: 300px;
-  }
-  
-  h1 {
-    font-size: 4rem;
-    color: white;
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    border: 5px solid white;
-    padding: 20px;
-    margin: 0 auto;
-    width: 60%;
-  }
-  
-  main {
-    font-size: 1.2rem;
-    color: #666;
-    padding-left: 500px;
-  }
-  
-  section {
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #fff;
-    text-underline-offset: 10px;
-    margin-left: 40px;
+button:hover {
+  background-color: #4ca75a;
+}
 
-  }
+header {
+  text-align: center;
+  margin-top: 100px;
+}
 
-  h3 {
-    margin-left: 50px;
-    font-size: 1.8rem;
-    color: #fff;
-    margin-left: 200px;
-  }
-  
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-  
-  </style>
+h1 {
+  font-size: 3rem;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: 5px solid white;
+  padding: 20px;
+  margin: 0 auto;
+  width: 60%;
+}
+
+main {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-top: 50px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #fff;
+  text-underline-offset: 10px;
+  padding-left: 550px;
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+</style>
