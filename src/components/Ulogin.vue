@@ -2,12 +2,10 @@
   <div>
     <ArrowLeftIcon class="back" @click="goBack" />
     <h2>Login</h2>
-    <form @submit.prevent="login">
-      <label for="username">Username:</label>
-      <input v-model="username" type="text" id="username" placeholder="Enter your username" required>
-      <label for="password">Password:</label>
-      <input v-model="password" type="password" id="password" placeholder="Enter your password" required>
-      <button type="submit">Login</button>
+    <form @submit.prevent="handleLogin">
+    <input type="text" v-model="username" placeholder="Username" required>
+    <input type="password" v-model="password" placeholder="Password" required>
+    <button type="submit">Login</button>
     </form>
   </div>
 </template>
@@ -33,34 +31,21 @@ export default {
         this.$router.push({ name: "Home" });
       }
     },
-    login() {
-      // Make a POST request to your backend API for user authentication
-      axios.post("http://localhost:8080/userlogin",
-        {
-          username: this.username,
-          password: this.password,
-        }
-      )
+    handleLogin() {
+      const loginPayload = {
+        username: this.username,
+        password: this.password,
+      };
+      axios.post('/api/login', loginPayload)
         .then(response => {
-    // Handle the successful login response
-        console.log(response.data); // Log the response for debugging
-
-    // Check the response data and perform actions accordingly
-    if (response.data.id) {
-      // Assuming the server returns user ID upon successful login
-      // You may want to store user information or authentication token
-      // Redirect to another page or update the UI
-      window.location.href = '/dashboard'; // Example redirect
-    } else {
-      // Handle unexpected response data
-      console.error('Unexpected response data:', response.data);
-    }
-    })
-      .catch(error => {
-        // Handle login failure or errors
-        console.error(error.response.data); // Log the error response for debugging
-        // Show an error message or perform other actions as needed
-      });
+          const token = response.data.token;
+          localStorage.setItem('userToken', token); // Store the token
+          // Redirect or update UI
+        })
+        .catch(error => {
+          console.error('Login failed:', error);
+          // Handle error, show message to user
+        });
     },
   },
 };
