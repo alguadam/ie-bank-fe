@@ -17,6 +17,7 @@ import { ArrowLeftIcon } from "@vue-hero-icons/outline";
 import axios from "axios";
 
 export default {
+  name: "Ulogin",
   components: {
     ArrowLeftIcon,
   },
@@ -28,15 +29,43 @@ export default {
   },
   methods: {
     goBack() {
-      // Check if the router exists
       if (this.$router) {
-        // Navigate to the 'Home' route
         this.$router.push({ name: "Home" });
       }
+    },
+    login() {
+      // Make a POST request to your backend API for user authentication
+      axios.post("http://localhost:8080/userlogin",
+        {
+          username: this.username,
+          password: this.password,
+        }
+      )
+        .then(response => {
+    // Handle the successful login response
+        console.log(response.data); // Log the response for debugging
+
+    // Check the response data and perform actions accordingly
+    if (response.data.id) {
+      // Assuming the server returns user ID upon successful login
+      // You may want to store user information or authentication token
+      // Redirect to another page or update the UI
+      window.location.href = '/dashboard'; // Example redirect
+    } else {
+      // Handle unexpected response data
+      console.error('Unexpected response data:', response.data);
+    }
+    })
+      .catch(error => {
+        // Handle login failure or errors
+        console.error(error.response.data); // Log the error response for debugging
+        // Show an error message or perform other actions as needed
+      });
     },
   },
 };
 </script>
+
   
   <style scoped>
   /* Add your custom styles here */
