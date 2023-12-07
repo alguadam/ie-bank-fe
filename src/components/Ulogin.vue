@@ -32,6 +32,9 @@ export default {
       }
     },
     handleLogin() {
+      if(this.$router) {
+        this.$router.push({ name: "Upage" });
+      }
       const loginPayload = {
         username: this.username,
         password: this.password,
