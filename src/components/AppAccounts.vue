@@ -24,56 +24,64 @@
           </button>
           <br /><br />
           <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Account Name</th>
-                <th scope="col">Account Number</th>
-                <th scope="col">Account Balance</th>
-                <th scope="col">Account Currency</th>
-                <th scope="col">Account Country</th>
-                <th scope="col">Account Status</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="account in accounts" :key="account.id">
-                <td>{{ account.name }}</td>
-                <td>{{ account.account_number }}</td>
-                <td>{{ account.balance }}</td>
-                <td>{{ account.currency }}</td>
-                <td>{{ account.country }}</td>
-                <td>
-                  <span
-                    v-if="account.status == 'Active'"
-                    class="badge badge-success"
-                    >{{ account.status }}</span
+          <thead>
+            <tr>
+              <!-- Headers for each column -->
+              <th scope="col">Account Name</th>
+              <th scope="col">Account Number</th>
+              <th scope="col">Account Balance</th>
+              <th scope="col">Account Currency</th>
+              <th scope="col">Account Country</th>
+              <th scope="col">Account Status</th>
+              <th scope="col">Password</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Loop through the accounts -->
+            <tr v-for="account in accounts" :key="account.id">
+              <!-- Display account details in respective columns -->
+              <td>{{ account.name }}</td>
+              <td>{{ account.account_number }}</td>
+              <td>{{ account.balance }}</td>
+              <td>{{ account.currency }}</td>
+              <td>{{ account.country }}</td>
+              <td>
+                <!-- Display status using a badge -->
+                <span
+                  v-if="account.status === 'Active'"
+                  class="badge badge-success"
+                >
+                  {{ account.status }}
+                </span>
+                <span v-else class="badge badge-danger">
+                  {{ account.status }}
+                </span>
+              </td>
+              <td>{{ account.password }}</td>
+              <td>
+                <!-- Actions buttons -->
+                <div class="btn-group" role="group">
+                  <button
+                    type="button"
+                    class="btn btn-info btn-sm"
+                    v-b-modal.editAccountModal
+                    @click="editAccount(account)"
                   >
-                  <span v-else class="badge badge-danger">{{
-                    account.status
-                  }}</span>
-                </td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      v-b-modal.edit-account-modal
-                      @click="editAccount(account)"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-danger btn-sm"
-                      @click="deleteAccount(account)"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    @click="deleteAccount(account)"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
           <footer class="text-center">
             Copyright &copy; All Rights Reserved.
           </footer>
@@ -125,6 +133,20 @@
               type="text"
               v-model="createAccountForm.country"
               placeholder="Account Country"
+              required
+            >
+            </b-form-input>
+          </b-form-group>
+          <b-form-group
+            id="form-password-group"
+            label="Password:"
+            label-for="form-password-input"
+          >
+            <b-form-input
+              id="form-password-input"
+              type="text"
+              v-model="createAccountForm.password"
+              placeholder="Account Password"
               required
             >
             </b-form-input>
@@ -279,6 +301,7 @@ export default {
       this.createAccountForm.country = "";
       this.editAccountForm.id = "";
       this.editAccountForm.name = "";
+      this.editAccountForm.password = "";
     },
 
     // Handle submit event for create account
@@ -289,6 +312,7 @@ export default {
         name: this.createAccountForm.name,
         currency: this.createAccountForm.currency,
         country: this.createAccountForm.country,
+        password: this.createAccountForm.password,
       };
       this.RESTcreateAccount(payload);
       this.initForm();
