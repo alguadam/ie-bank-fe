@@ -1,12 +1,22 @@
 <template>
-  <div>
-    <ArrowLeftIcon class="back" @click="goBack" />
-    <h2>Login</h2>
-    <form @submit.prevent="handleLogin">
-    <input type="text" v-model="username" placeholder="Username" required>
-    <input type="password" v-model="password" placeholder="Password" required>
-    <button type="submit">Login</button>
+  <div class="login-container">
+    <form @submit.prevent="handleLogin" class="login-form">
+      <h1>Login</h1>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" v-model="username" placeholder="Username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password" placeholder="Password" required />
+      </div>
+      <div class="form-group">
+        <!-- Render router-link conditionally based on login status -->
+        <button v-if="loggedIn" @click="handleLogin" class="login-button">Login</button>
+        <button v-else type="submit" class="login-button">Login</button>
+      </div>
     </form>
+    <p v-if="error" class="error-message">{{ error }}</p>
   </div>
 </template>
 
@@ -32,18 +42,18 @@ export default {
       }
     },
     handleLogin() {
-      if(this.$router) {
-        this.$router.push({ name: "Upage" });
-      }
       const loginPayload = {
-        username: this.username,
+        name: this.username,
         password: this.password,
       };
-      axios.post('/api/login', loginPayload)
+      axios.post('http://127.0.0.1:5000/userlogin', loginPayload)
         .then(response => {
           const token = response.data.token;
           localStorage.setItem('userToken', token); // Store the token
           // Redirect or update UI
+          if (this.$router){
+            this.$router.push({name: 'Upage'});
+          }
         })
         .catch(error => {
           console.error('Login failed:', error);
@@ -115,4 +125,3 @@ export default {
     font-size: 1.5rem;
   }
   </style>
-  
