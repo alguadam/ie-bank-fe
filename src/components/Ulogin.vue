@@ -46,7 +46,7 @@ export default {
         name: this.username,
         password: this.password,
       };
-      axios.post('http://127.0.0.1:5000/userlogin', loginPayload)
+      axios.post('https://team3-be-dev.azurewebsites.net/userlogin', loginPayload)
         .then(response => {
           const token = response.data.token;
           localStorage.setItem('userToken', token); // Store the token

@@ -10,8 +10,8 @@ on:
   workflow_dispatch:
 
 env:
-  FRONTEND_WEBAPP_DEV: marianareyesa-fe-dev
-  FRONTEND_WEBAPP_UAT: marianareyesa-fe-uat
+  FRONTEND_WEBAPP_DEV: team3-fe-dev
+  FRONTEND_WEBAPP_UAT: team3-fe-uat
 
 jobs:
   build:
