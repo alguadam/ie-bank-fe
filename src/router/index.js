@@ -4,6 +4,9 @@ import Skull from '../components/Skull.vue'
 import AppAccounts from '../components/AppAccounts.vue'
 import Ulogin from '../components/Ulogin.vue'
 import Home from '../components/Home.vue'
+import Upage from '../components/Upage.vue'
+import Uaccount from '../components/Uaccount.vue'
+
 
 Vue.use(VueRouter);
 
@@ -27,6 +30,16 @@ const routes = [
     path: '/userlogin',
     name: 'Ulogin',
     component: Ulogin
+  },
+  {
+    path: '/upage',
+    name: 'Upage',
+    component: Upage
+  },
+  {
+    path: '/uaccount',
+    name: 'Uaccount',
+    component: Uaccount
   }
 ]
 
