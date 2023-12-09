@@ -11,9 +11,7 @@
         <input type="password" id="password" v-model="password" placeholder="Password" required />
       </div>
       <div class="form-group">
-        <!-- Render router-link conditionally based on login status -->
-        <button v-if="loggedIn" @click="handleLogin" class="login-button">Login</button>
-        <button v-else type="submit" class="login-button">Login</button>
+        <button type="submit" class="login-button">Login</button>
       </div>
     </form>
     <p v-if="error" class="error-message">{{ error }}</p>
@@ -33,14 +31,10 @@ export default {
     return {
       username: "",
       password: "",
+      error: null, // Define error property
     };
   },
   methods: {
-    goBack() {
-      if (this.$router) {
-        this.$router.push({ name: "Home" });
-      }
-    },
     handleLogin() {
       const loginPayload = {
         name: this.username,
@@ -49,15 +43,16 @@ export default {
       axios.post('http://127.0.0.1:5000/userlogin', loginPayload)
         .then(response => {
           const token = response.data.token;
+          localStorage.removeItem('userToken');
           localStorage.setItem('userToken', token); // Store the token
           // Redirect or update UI
-          if (this.$router){
-            this.$router.push({name: 'Upage'});
+          if (this.$router) {
+            this.$router.push({ name: 'Upage', params: { username: this.username }});
           }
         })
         .catch(error => {
           console.error('Login failed:', error);
-          // Handle error, show message to user
+          this.error = 'Login failed. Please check your credentials.'; // Set error message
         });
     },
   },
