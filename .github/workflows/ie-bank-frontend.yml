@@ -10,9 +10,9 @@ on:
   workflow_dispatch:
 
 env:
-  FRONTEND_WEBAPP_DEV: team3-fe-dev
-  FRONTEND_WEBAPP_UAT: team3-fe-uat
-  FRONTEND_WEBAPP_PROD: team3-fe-prod
+  FRONTEND_WEBAPP_DEV: team3m-fe-dev
+  FRONTEND_WEBAPP_UAT: team3m-fe-uat
+  FRONTEND_WEBAPP_PROD: team3m-fe-prod
 
 jobs:
   build:
