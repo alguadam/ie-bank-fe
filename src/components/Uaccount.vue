@@ -26,10 +26,12 @@
   
   <script>
   import { ArrowLeftIcon } from "@vue-hero-icons/outline";
+  
   export default {
     components: {
     ArrowLeftIcon,
     },
+    
     data() {
       return {
         user: {
@@ -50,11 +52,10 @@
       };
     },
     methods: {
-
+  
     goBack() {
-        if (this.$router) {
-        this.$router.push({ name: "Upage" });
-        }
+  
+      this.$router.push({ name: 'Ulogin'});
         },
       sendMoney() {
         // Validate input

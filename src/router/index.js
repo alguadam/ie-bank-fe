@@ -32,7 +32,7 @@ const routes = [
     component: Ulogin
   },
   {
-    path: '/upage',
+    path: '/upage/:username', // Define the route parameter as ':username'
     name: 'Upage',
     component: Upage
   },
