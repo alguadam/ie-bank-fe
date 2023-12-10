@@ -24,17 +24,22 @@
       </form>
 
       <!-- Transaction History Section -->
-      <div v-if="transactionHistory && transactionHistory.length > 0">
-        <h2>Transaction History</h2>
-        <ul>
-          <li v-for="(transaction, index) in transactionHistory" :key="index">
-            <p>Sender: {{ transaction.sender }}</p>
-            <p>Receiver: {{ transaction.receiver }}</p>
-            <p>Amount: {{ transaction.amount }}</p>
-            <!-- Add other relevant transaction details -->
-          </li>
-        </ul>
-      </div>
+      <div v-if="transactionHistory && transactionHistory.length > 0" class="transaction-container">
+    <h2>Transaction History</h2>
+    <div class="transaction-list">
+        <div v-for="(transaction, index) in transactionHistory.slice().reverse()" :key="index" class="transaction-item">
+            <div class="transaction-card">
+                <div class="transaction-details">
+                    <p><strong>Sender:</strong> {{ transaction.sender }}</p>
+                    <p><strong>Receiver:</strong> {{ transaction.receiver }}</p>
+                    <p><strong>Amount:</strong> {{ transaction.amount }}</p>
+                    <!-- Add other relevant transaction details -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
       <!-- End of Transaction History Section -->
     </div>
   </div>
@@ -171,4 +176,48 @@ h2 {
   color: #4caf50;
   font-size: 1.5rem;
 }
+/* Styling for the transaction history container */
+.transaction-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the transaction list */
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for each transaction item */
+.transaction-item {
+    margin-bottom: 20px;
+}
+
+/* Styling for transaction card */
+.transaction-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for transaction details */
+.transaction-detail {
+    margin: 8px 0;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for transaction detail labels */
+.transaction-detail strong {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
 </style>
