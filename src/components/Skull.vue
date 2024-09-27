@@ -1,8 +1,7 @@
 <template>
     <div>
         <h1>Skull</h1>
-        <p>Environment variables read from file {{ env_var_file_name }}</p>
-        <p>{{ msg }}, and it is running from the {{ environment }} environment</p>
+        <p>{{ msg }}</p>
         <button type="button" class="btn btn-secondary">
             Skull button
         </button>
@@ -17,7 +16,7 @@ export default
         name: 'Skull',
         data() {
             return {
-                msg: 'Hi! This is the skull component 💀'
+                msg: `Hi! This is the skull component 💀, running in mode: ${process.env.NODE_ENV} with environment variables defined in ${process.env.VUE_APP_ENV_VAR_FILE_NAME}`
             }
         },
         methods:
